@@ -1,0 +1,348 @@
+скрин как фон:
+Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/Регистрация.jpg'),
+                fit: BoxFit.cover
+            )
+        ),
+
+      ),
+
+
+
+
+main.dart
+
+import 'package:flutter/material.dart';
+
+
+class DreamsAll extends StatefulWidget {
+  const DreamsAll({Key? key}) : super(key: key);
+
+  @override
+  State<DreamsAll> createState() => _DreamsAllState();
+}
+
+class _DreamsAllState extends State<DreamsAll> {
+
+  String _dreamsUser = '';
+  List dreamList = [];
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+
+
+    dreamList.addAll(['Космос','Футбол','Самокат']);
+  }
+
+  //void _menuOpen(){
+    //Navigator.of(context).push(
+      //  MaterialPageRoute(builder: (BuildContext context){
+        //  return Scaffold(
+          //    appBar: AppBar(title: Text('Меню'),),
+            //  body: Row(
+              //  children: [
+                //  ElevatedButton(onPressed: (){
+
+                  //}, child: Text('На главную')),
+
+                  //Padding(padding: EdgeInsets.only(left: 15)),
+
+                  //ElevatedButton(onPressed: (){
+                    //Navigator.pop(context);
+                    //Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+
+                  //}, child: Text('Выйти из аккаунта')),
+
+               // ],
+              //)
+          //);
+        //})
+    //);
+  //}
+//
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar:AppBar(
+
+          //Задний фон
+          backgroundColor: Colors.white,
+
+          //Титульный текст со стилями
+          title: Center(
+            child: Text(
+              'Мои желания',
+              style:TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                  fontFamily: 'Forum-Regular'
+              ),
+            ),
+          ),
+
+          //Работа с тенями
+          elevation: 0.0,
+          shadowColor: Colors.transparent,
+          //Контейнер и работа с его границами
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: Color.fromRGBO(139, 8, 201, 1),
+                  width: 1.7,
+                ),
+                bottom: BorderSide(
+                  color: Color.fromRGBO(139, 8, 201, 1),
+                  width: 1.7,
+                ),
+              ),
+            ),
+          ),
+        ),
+
+      body: ListView.builder(
+          itemCount: dreamList.length,
+          itemBuilder: (BuildContext context, int index){
+            return Dismissible(
+              key: Key(dreamList[index]),
+              child: Card(
+                child: ListTile(
+                  title: Text(dreamList[index]),
+                  trailing: IconButton(
+                    icon: Icon(
+                        Icons.delete_sweep,
+                        color: Colors.deepPurple
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        dreamList.removeAt(index);
+                      });
+                    },
+                  ),
+
+                ),
+
+              ),
+              onDismissed:(direction) {
+                setState(() {
+                  dreamList.removeAt(index);
+                });
+              },
+            );
+          }
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black12 ,
+        onPressed: (){
+          showDialog(context: context, builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Добавь свою собственную мечту'),
+              content: TextField(
+                onChanged: (String value) {
+                  _dreamsUser = value;
+                },
+              ),
+              actions: [
+                ElevatedButton(onPressed: () {
+                  setState(() {
+                    dreamList.add(_dreamsUser);
+                  });
+
+                  Navigator.of(context).pop();
+                }, child: Text('Добавить'))
+              ],
+            );
+          });
+        },
+        child: Icon(
+            Icons.add_box,
+            color: Colors.deepPurple
+        ),
+      ),
+
+
+
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+Dreams.dart
+
+import 'package:flutter/material.dart';
+
+
+class Dreams extends StatefulWidget {
+  const Dreams({Key? key}) : super(key: key);
+
+  @override
+  State<Dreams> createState() => _DreamsState();
+}
+
+class _DreamsState extends State<Dreams> {
+
+  String _dreamsUser = '';
+  List dreamList = [];
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+
+
+    dreamList.addAll(['Космос','Футбол','Самокат']);
+  }
+
+  void _menuOpen(){
+    Navigator.of(context).push(
+      MaterialPageRoute(builder: (BuildContext context){
+        return Scaffold(
+          appBar: AppBar(title: Text('Меню'),),
+          body: Row(
+            children: [
+              ElevatedButton(onPressed: (){
+
+              }, child: Text('На главную')),
+
+              Padding(padding: EdgeInsets.only(left: 15)),
+
+              ElevatedButton(onPressed: (){
+                Navigator.pop(context);
+                Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+
+              }, child: Text('Выйти из аккаунта')),
+
+            ],
+          )
+        );
+      })
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black45,
+      appBar: AppBar(
+        title: Text('Мечтай!'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.menu_outlined),
+            onPressed: _menuOpen,
+          ),
+        ],
+      ),
+      body: ListView.builder(
+          itemCount: dreamList.length,
+          itemBuilder: (BuildContext context, int index){
+            return Dismissible(
+                key: Key(dreamList[index]),
+                child: Card(
+                  child: ListTile(
+                      title: Text(dreamList[index]),
+                    trailing: IconButton(
+                      icon: Icon(
+                        Icons.delete_sweep,
+                        color: Colors.deepPurple
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          dreamList.removeAt(index);
+                        });
+                      },
+                    ),
+
+                  ),
+
+                ),
+                onDismissed:(direction) {
+                  setState(() {
+                    dreamList.removeAt(index);
+                  });
+                },
+            );
+          }
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black12 ,
+        onPressed: (){
+          showDialog(context: context, builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Добавь свою собственную мечту'),
+              content: TextField(
+                onChanged: (String value) {
+                  _dreamsUser = value;
+                },
+              ),
+              actions: [
+                ElevatedButton(onPressed: () {
+                  setState(() {
+                    dreamList.add(_dreamsUser);
+                  });
+
+                  Navigator.of(context).pop();
+                }, child: Text('Добавить'))
+              ],
+            );
+          });
+        },
+        child: Icon(
+          Icons.add_box,
+          color: Colors.deepPurple
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+Regestry.dart
+import 'package:flutter/material.dart';
+
+class Regestry extends StatelessWidget {
+  const Regestry({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.black45,
+
+        body:
+        Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/Регистрация.jpg'),
+              fit: BoxFit.cover
+            )
+          ),
+
+        ),
+
+    );
+  }
+}
