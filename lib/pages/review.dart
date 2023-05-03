@@ -7,7 +7,17 @@ class review extends StatefulWidget {
   @override
   State<review> createState() => _reviewState();
 }
+
 class _reviewState extends State<review> {
+  List DreamsAll = [];
+
+  @override
+  void initState() {
+    super.initState();
+    DreamsAll.addAll(["run", "jump", "swim"]);
+  }
+
+
   int _selectedIndex = 0;
 
 
@@ -73,6 +83,45 @@ class _reviewState extends State<review> {
           ),
         ),
       ),
+      body:Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  decoration: BoxDecoration(color: Colors.white60),
+                  width: 530,
+                  height: 650,
+                  child: ListView.builder(
+                      itemCount: DreamsAll.length,
+                      itemBuilder: (BuildContext context, int index){
+                        return Dismissible(
+                          key: Key(DreamsAll[index]),
+                          child: Card(
+                            child: ListTile(
+                              title: Text(DreamsAll[index]),
+                              trailing: IconButton(
+                                icon: Icon(
+                                  Icons.menu,
+                                  color: Color.fromRGBO(139, 8, 201, 1),
+                                ),
+                                onPressed: (){},
+                              ),
+                            ),
+                          ),
+                          onDismissed: (direction){
+                            setState(() {
+                              DreamsAll.removeAt(index);
+                            });
+                          },
+                        );
+                      }
+                  )
+              ),
+            ],
+          )
+        ],
+      ),
 
        bottomNavigationBar: BottomNavigationBar(
 
@@ -109,7 +158,7 @@ class _reviewState extends State<review> {
            ),
          ],
          currentIndex: _selectedIndex,
-         selectedItemColor: Color.fromRGBO (250, 255, 14, 1),
+         selectedItemColor: Color.fromRGBO (139, 8, 201, 1),
          onTap: _onItemTapped,
        ),
 
