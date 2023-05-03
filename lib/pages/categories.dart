@@ -23,15 +23,12 @@ class _categoriesState extends State<categories> {
           Navigator.pushNamedAndRemoveUntil(
               context, '/categories', (route) => false);
           break;
+
         case 2:
-          Navigator.pushNamedAndRemoveUntil(
-              context, '/DreamAdd', (route) => false);
-          break;
-        case 3:
           Navigator.pushNamedAndRemoveUntil(
               context, '/DreamsAll', (route) => false);
           break;
-        case 4:
+        case 3:
           Navigator.pushNamedAndRemoveUntil(
               context, '/settings', (route) => false);
           break;
@@ -104,13 +101,7 @@ class _categoriesState extends State<categories> {
             ),
             label: 'Категории',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_circle,
-              color: Color.fromRGBO(139, 8, 201, 1),
-              size: 36,
-            ),
-            label: 'Добавь желание',
-          ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.star_border,
               size: 16.64,

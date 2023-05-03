@@ -9,7 +9,7 @@ class settings extends StatefulWidget {
   State<settings> createState() => _settingsState();
 }
 class _settingsState extends State<settings> {
-  int _selectedIndex = 4;
+  int _selectedIndex = 3;
 
 
   void _onItemTapped(int index) {
@@ -23,12 +23,9 @@ class _settingsState extends State<settings> {
           Navigator.pushNamedAndRemoveUntil(context, '/categories',(route) => false);
           break;
         case 2:
-          Navigator.pushNamedAndRemoveUntil(context, '/DreamAdd',(route) => false);
-          break;
-        case 3:
           Navigator.pushNamedAndRemoveUntil(context, '/DreamsAll',(route) => false);
           break;
-        case 4:
+        case 3:
           Navigator.pushNamedAndRemoveUntil(context, '/settings',(route) => false);
           break;
       }
@@ -40,6 +37,24 @@ class _settingsState extends State<settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Row(
+        children: [
+
+          Padding(
+            padding: EdgeInsets.all(15.0),
+            child: CircleAvatar(
+              backgroundColor: Colors.black,
+              radius: 42,
+            ),
+          ),
+
+
+
+          Padding(
+            padding: EdgeInsets.all(15.0),
+              child: Text("Ваше имя \nВаша почта"))
+        ],
+      ),
 
 
        bottomNavigationBar: BottomNavigationBar(
@@ -60,13 +75,7 @@ class _settingsState extends State<settings> {
              ),
              label: 'Категории',
            ),
-           BottomNavigationBarItem(
-             icon: Icon(Icons.add_circle,
-               color: Color.fromRGBO(139, 8, 201, 1),
-               size: 36,
-             ),
-             label: 'Добавь желание',
-           ),
+
            BottomNavigationBarItem(
              icon: Icon(Icons.star_border,
                size: 16.64,

@@ -10,20 +10,17 @@ class DreamsAll extends StatefulWidget {
 }
 class _DreamsAllState extends State<DreamsAll> {
 
-  List<String> Dreams = [
-    "Dream 1",
-    "Dream 2",
-    "Dream 3",
-    "Dream 4",
-    "Dream 5",
-    "Dream 6",
-    "Dream 7",
-    "Dream 8",
-    "Dream 9",
-    "Dream 10",
-  ];
 
-  int _selectedIndex = 3;
+  List DreamsAll = [];
+
+  @override
+  void initState() {
+    super.initState();
+    DreamsAll.addAll(["run", "jump", "swim"]);
+  }
+
+
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -35,13 +32,11 @@ class _DreamsAllState extends State<DreamsAll> {
         case 1:
           Navigator.pushNamedAndRemoveUntil(context, '/categories',(route) => false);
           break;
+
         case 2:
-          Navigator.pushNamedAndRemoveUntil(context, '/DreamAdd',(route) => false);
-          break;
-        case 3:
           Navigator.pushNamedAndRemoveUntil(context, '/DreamsAll',(route) => false);
           break;
-        case 4:
+        case 3:
           Navigator.pushNamedAndRemoveUntil(context, '/settings',(route) => false);
           break;
       }
@@ -93,10 +88,122 @@ class _DreamsAllState extends State<DreamsAll> {
 
 
 
-       body: ListView(
-         physics: BouncingScrollPhysics(),
-         children: Dreams.map((i) =>Text(i)).toList(),
-       ),
+       body:Column(
+           children: [
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceAround,
+               children: [
+
+                 Container(
+                   decoration: BoxDecoration(
+                       color:Color.fromRGBO(196, 127, 235, 1),
+                       borderRadius: BorderRadius.circular(20)
+                   ),
+                     width: 100,
+                     height: 35,
+
+                     child: TextButton(onPressed: (){
+                       Navigator.pushReplacementNamed(context, "/DreamsAll");
+                     },
+                     child: Text(
+                       'Все',
+                       style:TextStyle(
+                           fontSize: 13,
+                           color: Colors.black,
+                           fontFamily: 'Forum-Regular'
+                       ),
+                     ),
+                     ),
+                 ),
+
+
+
+                 Container(
+                   decoration: BoxDecoration(
+                       color:Color.fromRGBO(196, 127, 235, 1),
+                       borderRadius: BorderRadius.circular(20)
+                   ),
+                   width: 100,
+                   height: 35,
+
+                   child: TextButton(onPressed: (){
+                     Navigator.pushReplacementNamed(context, "/Dreamsinprogress");
+                   },
+                     child: Text(
+                       'В процессе',
+                       style:TextStyle(
+                           fontSize: 13,
+                           color: Colors.black,
+                           fontFamily: 'Forum-Regular'
+                       ),
+                     ),
+                   ),
+                 ),
+
+                 
+                 
+                 Container(
+                   decoration: BoxDecoration(
+                       color:Color.fromRGBO(196, 127, 235, 1),
+                       borderRadius: BorderRadius.circular(20)
+                   ),
+                   width: 100,
+                   height: 35,
+
+                   child: TextButton(onPressed: (){
+                     Navigator.pushReplacementNamed(context, "/Dreamsfinished");
+                   },
+                     child: Text(
+                       'Завершенные',
+                       style:TextStyle(
+                           fontSize: 13,
+                           color: Colors.black,
+                           fontFamily: 'Forum-Regular'
+                       ),
+                     ),
+                   ),
+                 ),
+               ],
+             ),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                  Container(
+                    decoration: BoxDecoration(color: Colors.grey),
+                    width: 530,
+                    height: 650,
+                    child: ListView.builder(
+                        itemCount: DreamsAll.length,
+                        itemBuilder: (BuildContext context, int index){
+                          return Dismissible(
+                              key: Key(DreamsAll[index]),
+                              child: Card(
+                                child: ListTile(
+                                    title: Text(DreamsAll[index]),
+                                  trailing: IconButton(
+                                    icon: Icon(
+                                        Icons.menu,
+                                        color: Color.fromRGBO(139, 8, 201, 1),
+                                    ),
+                                    onPressed: (){},
+                                  ),
+                                ),
+                              ),
+                            onDismissed: (direction){
+                                setState(() {
+                                  DreamsAll.removeAt(index);
+                                });
+                            },
+                          );
+                        }
+                    )
+                  ),
+               ],
+             )
+           ],
+         ),
+
+
 
 
 
@@ -118,13 +225,7 @@ class _DreamsAllState extends State<DreamsAll> {
              ),
              label: 'Категории',
            ),
-           BottomNavigationBarItem(
-             icon: Icon(Icons.add_circle,
-               color: Color.fromRGBO(139, 8, 201, 1),
-               size: 36,
-             ),
-             label: 'Добавь желание',
-           ),
+
            BottomNavigationBarItem(
              icon: Icon(Icons.star_border,
                size: 16.64,

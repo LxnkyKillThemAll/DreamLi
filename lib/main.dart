@@ -3,7 +3,6 @@ import 'package:project_1/pages/Regestry.dart';
 import 'package:project_1/pages/Dreams/DreamsAll.dart';
 import 'package:project_1/pages/Dreams/Dreamsfinished.dart';
 import 'package:project_1/pages/Dreams/Dreamsinprogress.dart';
-import 'package:project_1/pages/Dreams/DreamAdd.dart';
 import 'package:project_1/pages/categories.dart';
 import 'package:project_1/pages/review.dart';
 import 'package:project_1/pages/settings.dart';
@@ -26,7 +25,6 @@ void main() {
       '/DreamsAll': (context) => DreamsAll(),
       '/Dreamsinprogress': (context) => Dreamsinprogress(),
       '/Dreamsfinished':(context) => Dreamsfinished(),
-      '/DreamAdd':(context) => DreamAdd(),
       '/settings':(context) => settings(),
       '/review':(context) => review(),
       '/categories':(context) => categories(),

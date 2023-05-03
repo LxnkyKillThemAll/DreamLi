@@ -9,8 +9,21 @@ class Dreamsinprogress extends StatefulWidget {
   State<Dreamsinprogress> createState() => _DreamsinprogressState();
 }
 class _DreamsinprogressState extends State<Dreamsinprogress> {
-  int _selectedIndex = 0;
 
+  List<String> Dreams = [
+    "Dream 1",
+    "Dream 2",
+    "Dream 3",
+    "Dream 4",
+    "Dream 5",
+    "Dream 6",
+    "Dream 7",
+    "Dream 8",
+    "Dream 9",
+    "Dream 10",
+  ];
+
+  int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -22,13 +35,11 @@ class _DreamsinprogressState extends State<Dreamsinprogress> {
         case 1:
           Navigator.pushNamedAndRemoveUntil(context, '/categories',(route) => false);
           break;
+
         case 2:
-          Navigator.pushNamedAndRemoveUntil(context, '/DreamAdd',(route) => false);
-          break;
-        case 3:
           Navigator.pushNamedAndRemoveUntil(context, '/DreamsAll',(route) => false);
           break;
-        case 4:
+        case 3:
           Navigator.pushNamedAndRemoveUntil(context, '/settings',(route) => false);
           break;
       }
@@ -79,50 +90,134 @@ class _DreamsinprogressState extends State<Dreamsinprogress> {
       ),
 
 
-      // bottomNavigationBar: BottomNavigationBar(
-      //
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.map_outlined,
-      //           size: 25,
-      //           color: Colors.black
-      //       ),
-      //       label: 'Обзор',
-      //     ),
-      //
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.category_outlined,
-      //           size: 25.2,
-      //           color: Colors.black
-      //       ),
-      //       label: 'Категории',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.add_circle,
-      //         color: Color.fromRGBO(139, 8, 201, 1),
-      //         size: 36,
-      //       ),
-      //       label: 'Добавь желание',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.star_border,
-      //         size: 16.64,
-      //         color: Colors.black,
-      //       ),
-      //       label: 'Мои желания',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.settings_outlined,
-      //         size: 25.2,
-      //         color: Colors.black,
-      //       ),
-      //       label: 'Настройки',
-      //     ),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   selectedItemColor: Color.fromRGBO (250, 255, 14, 1),
-      //   onTap: _onItemTapped,
-      // ),
+
+      body:Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+
+              Container(
+                decoration: BoxDecoration(
+                    color:Color.fromRGBO(196, 127, 235, 1),
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                width: 100,
+                height: 35,
+
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacementNamed(context, "/DreamsAll");
+                },
+                  child: Text(
+                    'Все',
+                    style:TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: 'Forum-Regular'
+                    ),
+                  ),
+                ),
+
+
+              ),
+
+
+
+              Container(
+                decoration: BoxDecoration(
+                    color:Color.fromRGBO(196, 127, 235, 1),
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                width: 100,
+                height: 35,
+
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacementNamed(context, "/Dreamsinprogress");
+                },
+                  child: Text(
+                    'В процессе',
+                    style:TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: 'Forum-Regular'
+                    ),
+                  ),
+                ),
+
+
+
+              ),
+
+              Container(
+                decoration: BoxDecoration(
+                    color:Color.fromRGBO(196, 127, 235, 1),
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                width: 100,
+                height: 35,
+
+                child: TextButton(onPressed: (){
+                  Navigator.pushReplacementNamed(context, "/Dreamsfinished");
+                },
+                  child: Text(
+                    'Завершенные',
+                    style:TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: 'Forum-Regular'
+                    ),
+                  ),
+                ),
+
+
+              ),
+            ],
+          ),
+        ],
+      ),
+
+
+
+
+
+      bottomNavigationBar: BottomNavigationBar(
+
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined,
+                size: 25,
+                color: Colors.black
+            ),
+            label: 'Обзор',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.category_outlined,
+                size: 25.2,
+                color: Colors.black
+            ),
+            label: 'Категории',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star_border,
+              size: 16.64,
+              color: Colors.black,
+            ),
+            label: 'Мои желания',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings_outlined,
+              size: 25.2,
+              color: Colors.black,
+            ),
+            label: 'Настройки',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Color.fromRGBO (250, 255, 14, 1),
+        onTap: _onItemTapped,
+      ),
 
 
 
