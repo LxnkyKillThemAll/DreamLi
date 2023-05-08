@@ -62,9 +62,9 @@ flutter:
   assets:
     - assets/img/Group70.png
     - assets/img/test.webp
-    - assets/img/Регистрация.jpg
+    - assets/img/Регистрация.png
     - assets/img/DreamLi.png
-
+    - assets/img/Opening.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -95,30 +95,30 @@ class _categoriesState extends State<categories> {
           ),
 
           BottomNavigationBarItem(
-            icon: Icon(Icons.category_outlined,
-                size: 25.2,
+            icon: Icon(Icons.widgets_outlined,
+                size: 25,
                 color: Colors.black
             ),
             label: 'Категории',
           ),
 
           BottomNavigationBarItem(
-            icon: Icon(Icons.star_border,
-              size: 16.64,
+            icon: Icon(Icons.star_outline,
+              size: 25,
               color: Colors.black,
             ),
             label: 'Мои желания',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings_outlined,
-              size: 25.2,
+              size: 25,
               color: Colors.black,
             ),
             label: 'Настройки',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromRGBO (250, 255, 14, 1),
+        selectedItemColor: Color.fromRGBO (139, 8, 201, 1),
         onTap: _onItemTapped,
       ),
 

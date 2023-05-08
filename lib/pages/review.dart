@@ -9,16 +9,10 @@ class review extends StatefulWidget {
 }
 
 class _reviewState extends State<review> {
-  List DreamsAll = [];
-
-  @override
-  void initState() {
-    super.initState();
-    DreamsAll.addAll(["run", "jump", "swim"]);
-  }
-
-
   int _selectedIndex = 0;
+  @override
+
+
 
 
   void _onItemTapped(int index) {
@@ -38,7 +32,6 @@ class _reviewState extends State<review> {
           Navigator.pushNamedAndRemoveUntil(context, '/settings',(route) => false);
           break;
       }
-
     });
   }
 
@@ -46,7 +39,6 @@ class _reviewState extends State<review> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar:AppBar(
 
         //Задний фон
@@ -58,7 +50,7 @@ class _reviewState extends State<review> {
             'Обзор',
             style:TextStyle(
                 fontSize: 30,
-                color: Colors.black,
+                color: Color.fromRGBO(139, 8, 201, 1),
                 fontFamily: 'Forum-Regular'
             ),
           ),
@@ -83,102 +75,48 @@ class _reviewState extends State<review> {
           ),
         ),
       ),
-      body:Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                  decoration: BoxDecoration(color: Colors.white60),
-                  width: 530,
-                  height: 650,
-                  child: ListView.builder(
-                      itemCount: DreamsAll.length,
-                      itemBuilder: (BuildContext context, int index){
-                        return Dismissible(
-                          key: Key(DreamsAll[index]),
-                          child: Card(
-                            child: ListTile(
-                              title: Text(DreamsAll[index]),
-                              trailing: IconButton(
-                                icon: Icon(
-                                  Icons.menu,
-                                  color: Color.fromRGBO(139, 8, 201, 1),
-                                ),
-                                onPressed: (){},
-                              ),
-                            ),
-                          ),
-                          onDismissed: (direction){
-                            setState(() {
-                              DreamsAll.removeAt(index);
-                            });
-                          },
-                        );
-                      }
-                  )
-              ),
-            ],
-          )
+
+
+
+
+      bottomNavigationBar: BottomNavigationBar(
+
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined,
+                size: 25,
+                color: Colors.black
+            ),
+            label: 'Обзор',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.widgets_outlined,
+                size: 25,
+                color: Colors.black
+            ),
+            label: 'Категории',
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star_outline,
+              size: 25,
+              color: Colors.black,
+            ),
+            label: 'Мои желания',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings_outlined,
+              size: 25,
+              color: Colors.black,
+            ),
+            label: 'Настройки',
+          ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Color.fromRGBO (139, 8, 201, 1),
+        onTap: _onItemTapped,
       ),
-
-       bottomNavigationBar: BottomNavigationBar(
-
-         items: const <BottomNavigationBarItem>[
-           BottomNavigationBarItem(
-             icon: Icon(Icons.map_outlined,
-               size: 25,
-               color: Colors.black
-             ),
-             label: 'Обзор',
-           ),
-
-           BottomNavigationBarItem(
-             icon: Icon(Icons.category_outlined,
-               size: 25.2,
-               color: Colors.black
-             ),
-             label: 'Категории',
-           ),
-
-           BottomNavigationBarItem(
-             icon: Icon(Icons.star_border,
-               size: 16.64,
-               color: Colors.black,
-             ),
-             label: 'Мои желания',
-           ),
-           BottomNavigationBarItem(
-             icon: Icon(Icons.settings_outlined,
-               size: 25.2,
-               color: Colors.black,
-             ),
-             label: 'Настройки',
-           ),
-         ],
-         currentIndex: _selectedIndex,
-         selectedItemColor: Color.fromRGBO (139, 8, 201, 1),
-         onTap: _onItemTapped,
-       ),
-
-
-
-
-
-
-
-
-
     );
   }
 }
-
-
-
-
-
-
-
-
-

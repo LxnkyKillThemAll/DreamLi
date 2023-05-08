@@ -12,7 +12,7 @@ class Regestry extends StatelessWidget {
 
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/img/Регистрация.jpg'),
+            image: AssetImage('assets/img/Регистрация.png'),
             fit: BoxFit.fill
           )
         ),
@@ -23,7 +23,7 @@ class Regestry extends StatelessWidget {
 
             child: ElevatedButton(onPressed: (){
               Navigator.pushReplacementNamed(context, '/review');
-            }, child: Text('Вы зарегестрировались')),
+            }, child: Text('Войти')),
           ),
 
         ),
