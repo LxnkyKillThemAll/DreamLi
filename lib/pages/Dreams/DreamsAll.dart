@@ -178,8 +178,8 @@ class _DreamsAllState extends State<DreamsAll> {
                children: [
                   Container(
                     decoration: BoxDecoration(color: Colors.grey),
-                    width: 530,
-                    height: 650,
+                    width: MediaQuery.of(context).size.width - 120,
+                    height: MediaQuery.of(context).size.height - 170,
                     child: ListView.builder(
                         itemCount: DreamsAll.length,
                         itemBuilder: (BuildContext context, int index){
@@ -228,44 +228,44 @@ class _DreamsAllState extends State<DreamsAll> {
 
 
 
-      bottomNavigationBar: BottomNavigationBar(
+       bottomNavigationBar: BottomNavigationBar(
 
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.map_outlined,
-                size: 25,
-                color: Colors.black
-            ),
-            label: 'Обзор',
-          ),
+         items: const <BottomNavigationBarItem>[
+           BottomNavigationBarItem(
+             icon: Icon(Icons.map_outlined,
+                 size: 25,
+                 color: Colors.black
+             ),
+             label: 'Обзор',
+           ),
 
-          BottomNavigationBarItem(
-            icon: Icon(Icons.widgets_outlined,
-                size: 25,
-                color: Colors.black
-            ),
-            label: 'Категории',
-          ),
+           BottomNavigationBarItem(
+             icon: Icon(Icons.category_outlined,
+                 size: 25.2,
+                 color: Colors.black
+             ),
+             label: 'Категории',
+           ),
 
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star_outline,
-              size: 25,
-              color: Colors.black,
-            ),
-            label: 'Мои желания',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined,
-              size: 25,
-              color: Colors.black,
-            ),
-            label: 'Настройки',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromRGBO (139, 8, 201, 1),
-        onTap: _onItemTapped,
-      ),
+           BottomNavigationBarItem(
+             icon: Icon(Icons.star_border,
+               size: 16.64,
+               color: Colors.black,
+             ),
+             label: 'Мои желания',
+           ),
+           BottomNavigationBarItem(
+             icon: Icon(Icons.settings_outlined,
+               size: 25.2,
+               color: Colors.black,
+             ),
+             label: 'Настройки',
+           ),
+         ],
+         currentIndex: _selectedIndex,
+         selectedItemColor: Color.fromRGBO (250, 255, 14, 1),
+         onTap: _onItemTapped,
+       ),
 
 
 

@@ -17,7 +17,7 @@ class _DreamsAddState extends State<DreamsAdd> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(200),
+        preferredSize: Size.fromHeight(100),
         child: AppBar(
           flexibleSpace: ClipRRect(
             borderRadius: BorderRadius.only(bottomRight: Radius.circular(50), bottomLeft: Radius.circular(50)),
@@ -36,6 +36,8 @@ class _DreamsAddState extends State<DreamsAdd> {
         ),
       ),
       extendBodyBehindAppBar: true,
+
+      body: Container(),
 
 
 
