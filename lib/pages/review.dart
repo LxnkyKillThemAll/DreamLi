@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:image_downloader/image_downloader.dart';
 
 class review extends StatefulWidget {
   const review({Key? key}) : super(key: key);
@@ -8,10 +8,26 @@ class review extends StatefulWidget {
   State<review> createState() => _reviewState();
 }
 
+
+class _dreamReview {
+
+  late int idDream;
+  late String nameDream;
+  late var urlDream;
+
+  _dreamReview(idDream,nameDream,urlDream){
+  this.idDream = idDream;
+  this.nameDream = nameDream;
+  this.urlDream = urlDream;
+  }
+}
+
+
+
+
 class _reviewState extends State<review> {
   int _selectedIndex = 0;
   @override
-
 
 
 
@@ -35,6 +51,8 @@ class _reviewState extends State<review> {
     });
   }
 
+  var _dreamOne = _dreamReview(1,"Tatto","https://ekaterinburg.tattoo.firmika.ru/data/texts_img/3967/8a98f2dd0583b9685c682e78abfd729c.jpg");
+  var _dreamTwo = _dreamReview(2,"Suicide","censored");
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +94,38 @@ class _reviewState extends State<review> {
         ),
       ),
 
-
+      body: SafeArea(
+        child:Center(
+          child: Column(
+            children: [
+              Card(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(_dreamOne.nameDream),
+                    CircleAvatar(
+                    backgroundImage: NetworkImage(_dreamOne.urlDream),
+                      maxRadius: 45.0,
+                   )
+              ]
+          )
+        ),
+              Card(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(_dreamTwo.nameDream),
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(_dreamTwo.urlDream),
+                        maxRadius: 45.0,
+                      )
+                    ]
+                )
+            ),
+            ]
+),
+        ),
+      ),
 
 
       bottomNavigationBar: BottomNavigationBar(
