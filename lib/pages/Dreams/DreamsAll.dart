@@ -8,23 +8,35 @@ class DreamsAll extends StatefulWidget {
   @override
   State<DreamsAll> createState() => _DreamsAllState();
 }
+
+class _dreamAdd {
+
+  late String nameDream;
+  late String descriptionDream;
+  late String stepsDream;
+  late String categoryDream;
+
+  _dreamAdd(nameDream,descriptionDream,stepsDream,categoryDream){
+    this.nameDream = nameDream;
+    this.descriptionDream = descriptionDream;
+    this.stepsDream = stepsDream;
+    this.categoryDream = categoryDream;
+  }
+}
+
 class _DreamsAllState extends State<DreamsAll> {
 
 
-  String _Dreams = "";
   List DreamsAll = [];
 
-  List DescriptionAll = [];
 
-  List StepsAll = [];
 
-  List categoryAll = [];
+
 
 
   @override
   void initState() {
     super.initState();
-
   }
 
 
@@ -187,7 +199,7 @@ class _DreamsAllState extends State<DreamsAll> {
                               key: Key(DreamsAll[index]),
                               child: Card(
                                 child: ListTile(
-                                    title: Text(DreamsAll[index]),
+                                    title: Text(DreamsAll[index].nameDream),
                                   trailing: IconButton(
                                     icon: Icon(
                                         Icons.menu,
