@@ -64,7 +64,8 @@ flutter:
     - assets/img/Регистрация.png
     - assets/img/DreamLi.png
     - assets/img/Opening.png
-
+    - assets/img/FirstDream.png
+    - assets/img/SecondDream.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

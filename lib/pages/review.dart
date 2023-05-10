@@ -52,7 +52,7 @@ class _reviewState extends State<review> {
   }
 
   var _dreamOne = _dreamReview(1,"Tatto","https://ekaterinburg.tattoo.firmika.ru/data/texts_img/3967/8a98f2dd0583b9685c682e78abfd729c.jpg");
-  var _dreamTwo = _dreamReview(2,"Suicide","censored");
+  var _dreamTwo = _dreamReview(2,"Travel","censored");
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class _reviewState extends State<review> {
                   children: [
                     Text(_dreamOne.nameDream),
                     CircleAvatar(
-                    backgroundImage: NetworkImage(_dreamOne.urlDream),
+                    backgroundImage: AssetImage("assets/img/FirstDream.png"),
                       maxRadius: 45.0,
                    )
               ]
@@ -116,7 +116,7 @@ class _reviewState extends State<review> {
                     children: [
                       Text(_dreamTwo.nameDream),
                       CircleAvatar(
-                        backgroundImage: NetworkImage(_dreamTwo.urlDream),
+                        backgroundImage: AssetImage("assets/img/SecondDream.png"),
                         maxRadius: 45.0,
                       )
                     ]
