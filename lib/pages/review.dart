@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 
 class review extends StatefulWidget {
   const review({Key? key}) : super(key: key);
@@ -14,6 +15,7 @@ class _dreamReview {
   late String nameDream;
   late var urlDream;
 
+
   _dreamReview(idDream,nameDream,urlDream){
   this.idDream = idDream;
   this.nameDream = nameDream;
@@ -21,7 +23,9 @@ class _dreamReview {
   }
 }
 
+void _reviewAdd(nameDream){
 
+}
 
 
 class _reviewState extends State<review> {
@@ -97,19 +101,31 @@ class _reviewState extends State<review> {
         child:Center(
           child: Column(
             children: [
-              Card(
+              GestureDetector(
+              onTap: (){
+                Navigator.pushReplacementNamed(context, "/DreamsAdd");
+
+              },
+          child: Card(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(_dreamOne.nameDream),
-                    CircleAvatar(
-                    backgroundImage: AssetImage("assets/img/FirstDream.png"),
-                      maxRadius: 45.0,
-                   )
-              ]
-          )
-        ),
-              Card(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(_dreamOne.nameDream),
+                      CircleAvatar(
+                        backgroundImage: AssetImage("assets/img/FirstDream.png"),
+                        maxRadius: 45.0,
+                      )
+                    ]
+                )
+            ),),
+
+
+        GestureDetector(
+            onTap: (){
+              Navigator.pushReplacementNamed(context, "/DreamsAdd");
+
+            },
+            child:  Card(
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -121,6 +137,36 @@ class _reviewState extends State<review> {
                     ]
                 )
             ),
+        ),
+
+              GFCard(
+                boxFit: BoxFit.cover,
+                titlePosition: GFPosition.start,
+                image: Image.asset(
+                  'assets/img/SecondDream.png',
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                ),
+                showImage: true,
+                title: GFListTile(
+                  titleText: 'Путешествие',
+                  subTitleText: 'Отправиться в интересное путешествие на пару деньков',
+
+                ),
+                content: Text("Some quick example text to build on the card"),
+                buttonBar: GFButtonBar(
+                  children: <Widget>[
+                    GFAvatar(
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
             ]
 ),
         ),
