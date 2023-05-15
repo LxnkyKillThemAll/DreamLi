@@ -98,6 +98,7 @@ class _reviewState extends State<review> {
       ),
 
       body: SafeArea(
+        child: SingleChildScrollView(
         child:Center(
           child: Column(
             children: [
@@ -170,6 +171,7 @@ class _reviewState extends State<review> {
             ]
 ),
         ),
+      ),
       ),
 
 

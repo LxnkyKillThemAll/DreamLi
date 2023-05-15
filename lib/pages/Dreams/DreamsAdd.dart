@@ -37,7 +37,8 @@ class _DreamsAddState extends State<DreamsAdd> {
        ),
 
 
-      body: Column(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
             SizedBox(
               height: 10,
@@ -142,6 +143,7 @@ class _DreamsAddState extends State<DreamsAdd> {
             )
           ]
     ),
+      )
 
 
 
