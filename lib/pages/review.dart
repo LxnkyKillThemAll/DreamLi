@@ -53,9 +53,10 @@ class _reviewState extends State<review> {
       }
     });
   }
+  var _dreamOne = _dreamReview(1,"Tatto","assets/img/FirstDream.png");
+  var _dreamTwo = _dreamReview(2,"Travel","assets/img/SecondDream.png");
 
-  var _dreamOne = _dreamReview(1,"Tatto","https://ekaterinburg.tattoo.firmika.ru/data/texts_img/3967/8a98f2dd0583b9685c682e78abfd729c.jpg");
-  var _dreamTwo = _dreamReview(2,"Travel","censored");
+
 
   @override
   Widget build(BuildContext context) {
@@ -102,72 +103,51 @@ class _reviewState extends State<review> {
         child:Center(
           child: Column(
             children: [
-              GestureDetector(
-              onTap: (){
-                Navigator.pushReplacementNamed(context, "/DreamsAdd");
-
-              },
-          child: Card(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(_dreamOne.nameDream),
-                      CircleAvatar(
-                        backgroundImage: AssetImage("assets/img/FirstDream.png"),
-                        maxRadius: 45.0,
-                      )
-                    ]
-                )
-            ),),
-
-
         GestureDetector(
             onTap: (){
               Navigator.pushReplacementNamed(context, "/DreamsAdd");
 
             },
-            child:  Card(
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(_dreamTwo.nameDream),
-                      CircleAvatar(
-                        backgroundImage: AssetImage("assets/img/SecondDream.png"),
-                        maxRadius: 45.0,
-                      )
-                    ]
-                )
-            ),
-        ),
-
+            child:
               GFCard(
                 boxFit: BoxFit.cover,
                 titlePosition: GFPosition.start,
                 image: Image.asset(
-                  'assets/img/SecondDream.png',
-                  height: MediaQuery.of(context).size.height * 0.4,
+                  _dreamOne.urlDream,
+                  height: MediaQuery.of(context).size.height * 0.3,
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.cover,
                 ),
                 showImage: true,
                 title: GFListTile(
-                  titleText: 'Путешествие',
-                  subTitleText: 'Отправиться в интересное путешествие на пару деньков',
+                  titleText: _dreamOne.nameDream,
+                  subTitleText: 'Набить тату',
 
-                ),
-                content: Text("Some quick example text to build on the card"),
-                buttonBar: GFButtonBar(
-                  children: <Widget>[
-                    GFAvatar(
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
                 ),
               ),
+            ),
+          GestureDetector(
+              onTap: (){
+                Navigator.pushReplacementNamed(context, "/DreamsAdd");
 
+              },
+              child:
+              GFCard(
+                boxFit: BoxFit.cover,
+                titlePosition: GFPosition.start,
+                image: Image.asset(
+                  _dreamTwo.urlDream,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                ),
+                showImage: true,
+                title: GFListTile(
+                  titleText: _dreamTwo.nameDream,
+                  subTitleText: 'Отправиться в интересное путешествие на пару деньков',
+                ),
+              ),
+          )
             ]
 ),
         ),
