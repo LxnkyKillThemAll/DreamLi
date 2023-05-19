@@ -107,6 +107,7 @@ class _DreamsAddState extends State<DreamsAdd> {
                     ),
                     hintStyle: TextStyle(color: Colors.white),
                     hintText: "Добавьте шаги для достижения мечты\n1.Следить за питанием\n2.больше двигаться\n...")
+
             ),
             SizedBox(
               height: 40,

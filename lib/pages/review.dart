@@ -104,55 +104,48 @@ class _reviewState extends State<review> {
       body: SafeArea(
         child: SingleChildScrollView(
         child:Center(
-          child: Column(
-            children: [
-        GestureDetector(
-            onTap: (){
-              Navigator.pushReplacementNamed(context, "/DreamsAdd");
+          child: Container(
+            decoration: BoxDecoration(color: Colors.white),
+            width: MediaQuery.of(context).size.width - 0,
+            height: MediaQuery.of(context).size.height - 170,
+            child: ListView.builder(
+                itemCount: dreams.length,
+                itemBuilder: (BuildContext context, int index){
+                  return Dismissible(
+                    key: Key(dreams[index].nameDream),
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.pushReplacementNamed(context, "/DreamsAdd");
 
-            },
-            child:
-              GFCard(
-                boxFit: BoxFit.cover,
-                titlePosition: GFPosition.start,
-                image: Image.asset(
-                  dreams[0].urlDream,
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
-                showImage: true,
-                title: GFListTile(
-                  titleText: dreams[0].nameDream,
-                  subTitleText: 'Набить тату',
+                      },
+                      child:
+                      GFCard(
+                        boxFit: BoxFit.cover,
+                        titlePosition: GFPosition.start,
+                        image: Image.asset(
+                          dreams[index].urlDream,
+                          height: MediaQuery.of(context).size.height * 0.3,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        ),
+                        showImage: true,
+                        title: GFListTile(
+                          titleText: dreams[index].nameDream,
+                          subTitleText: 'Набить тату',
 
-                ),
-              ),
+                        ),
+                      ),
+                    ),
+                    onDismissed: (direction){
+                      setState(() {
+                        dreams.removeAt(index);
+                      });
+                    },
+                  );
+                }
             ),
-          GestureDetector(
-              onTap: (){
-                Navigator.pushReplacementNamed(context, "/DreamsAdd");
-
-              },
-              child:
-              GFCard(
-                boxFit: BoxFit.cover,
-                titlePosition: GFPosition.start,
-                image: Image.asset(
-                  dreams[1].urlDream,
-                  height: MediaQuery.of(context).size.height * 0.3,
-                  width: MediaQuery.of(context).size.width,
-                  fit: BoxFit.cover,
-                ),
-                showImage: true,
-                title: GFListTile(
-                  titleText: dreams[1].nameDream,
-                  subTitleText: 'Отправиться в интересное путешествие на пару деньков',
-                ),
-              ),
           )
-            ]
-),
+
         ),
       ),
       ),
