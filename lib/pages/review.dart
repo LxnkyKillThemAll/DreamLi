@@ -23,6 +23,7 @@ class _dreamReview {
   }
 }
 
+
 void _reviewAdd(nameDream){
 
 }
@@ -53,8 +54,10 @@ class _reviewState extends State<review> {
       }
     });
   }
-  var _dreamOne = _dreamReview(1,"Tatto","assets/img/FirstDream.png");
-  var _dreamTwo = _dreamReview(2,"Travel","assets/img/SecondDream.png");
+
+  List dreams = [_dreamReview(1,"Tatto","assets/img/FirstDream.png"), _dreamReview(2,"Travel","assets/img/SecondDream.png")]; //non-empty on create
+
+
 
 
 
@@ -113,14 +116,14 @@ class _reviewState extends State<review> {
                 boxFit: BoxFit.cover,
                 titlePosition: GFPosition.start,
                 image: Image.asset(
-                  _dreamOne.urlDream,
+                  dreams[0].urlDream,
                   height: MediaQuery.of(context).size.height * 0.3,
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.cover,
                 ),
                 showImage: true,
                 title: GFListTile(
-                  titleText: _dreamOne.nameDream,
+                  titleText: dreams[0].nameDream,
                   subTitleText: 'Набить тату',
 
                 ),
@@ -136,14 +139,14 @@ class _reviewState extends State<review> {
                 boxFit: BoxFit.cover,
                 titlePosition: GFPosition.start,
                 image: Image.asset(
-                  _dreamTwo.urlDream,
+                  dreams[1].urlDream,
                   height: MediaQuery.of(context).size.height * 0.3,
                   width: MediaQuery.of(context).size.width,
                   fit: BoxFit.cover,
                 ),
                 showImage: true,
                 title: GFListTile(
-                  titleText: _dreamTwo.nameDream,
+                  titleText: dreams[1].nameDream,
                   subTitleText: 'Отправиться в интересное путешествие на пару деньков',
                 ),
               ),
