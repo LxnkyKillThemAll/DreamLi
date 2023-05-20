@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project_1/pages/Dreams/DreamsAdd.dart';
+import 'package:project_1/pages/Dreams/Class.dart';
 
 
 
@@ -9,29 +11,29 @@ class DreamsAll extends StatefulWidget {
   State<DreamsAll> createState() => _DreamsAllState();
 }
 
-class _dreamAdd {
 
-  late String nameDream;
-  late String descriptionDream;
-  late String stepsDream;
-  late String categoryDream;
-
-  _dreamAdd(nameDream,descriptionDream,stepsDream,categoryDream){
-    this.nameDream = nameDream;
-    this.descriptionDream = descriptionDream;
-    this.stepsDream = stepsDream;
-    this.categoryDream = categoryDream;
-  }
-}
 
 class _DreamsAllState extends State<DreamsAll> {
 
 
-  List DreamsAll = [];
 
+  List<dreamAdd> dreamList = [];
 
+  void addDream(dreamAdd dream) {
+    setState(() {
+      dreamList.add(dream);
+    });
+  }
+  void navigateToDreamsAdd(BuildContext context) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => DreamsAdd()),
+    );
 
-
+    if (result != null && result is dreamAdd) {
+      addDream(result);
+    }
+  }
 
 
   @override
@@ -45,22 +47,25 @@ class _DreamsAllState extends State<DreamsAll> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-      switch(_selectedIndex){
+      switch (_selectedIndex) {
         case 0:
-          Navigator.pushNamedAndRemoveUntil(context, '/review',(route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/review', (route) => false);
           break;
         case 1:
-          Navigator.pushNamedAndRemoveUntil(context, '/categories',(route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/categories', (route) => false);
           break;
 
         case 2:
-          Navigator.pushNamedAndRemoveUntil(context, '/DreamsAll',(route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/DreamsAll', (route) => false);
           break;
         case 3:
-          Navigator.pushNamedAndRemoveUntil(context, '/settings',(route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, '/settings', (route) => false);
           break;
       }
-
     });
   }
 
@@ -69,7 +74,7 @@ class _DreamsAllState extends State<DreamsAll> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      appBar:AppBar(
+      appBar: AppBar(
 
         //Задний фон
         backgroundColor: Colors.white,
@@ -78,7 +83,7 @@ class _DreamsAllState extends State<DreamsAll> {
         title: Center(
           child: Text(
             'Мои желания',
-            style:TextStyle(
+            style: TextStyle(
                 fontSize: 30,
                 color: Colors.black,
                 fontFamily: 'Forum-Regular'
@@ -107,195 +112,180 @@ class _DreamsAllState extends State<DreamsAll> {
       ),
 
 
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
 
-       body:Column(
-           children: [
-             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceAround,
-               children: [
+              Container(
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(196, 127, 235, 1),
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                width: 100,
+                height: 35,
 
-                 Container(
-                   decoration: BoxDecoration(
-                       color:Color.fromRGBO(196, 127, 235, 1),
-                       borderRadius: BorderRadius.circular(20)
-                   ),
-                     width: 100,
-                     height: 35,
-
-                     child: TextButton(onPressed: (){
-                       Navigator.pushReplacementNamed(context, "/DreamsAll");
-                     },
-                     child: Text(
-                       'Все',
-                       style:TextStyle(
-                           fontSize: 13,
-                           color: Colors.black,
-                           fontFamily: 'Forum-Regular'
-                       ),
-                     ),
-                     ),
-                 ),
-
-
-
-                 Container(
-                   decoration: BoxDecoration(
-                       color:Color.fromRGBO(196, 127, 235, 1),
-                       borderRadius: BorderRadius.circular(20)
-                   ),
-                   width: 100,
-                   height: 35,
-
-                   child: TextButton(onPressed: (){
-                     Navigator.pushReplacementNamed(context, "/Dreamsinprogress");
-                   },
-                     child: Text(
-                       'В процессе',
-                       style:TextStyle(
-                           fontSize: 13,
-                           color: Colors.black,
-                           fontFamily: 'Forum-Regular'
-                       ),
-                     ),
-                   ),
-                 ),
-
-                 
-                 
-                 Container(
-                   decoration: BoxDecoration(
-                       color:Color.fromRGBO(196, 127, 235, 1),
-                       borderRadius: BorderRadius.circular(20)
-                   ),
-                   width: 100,
-                   height: 35,
-
-                   child: TextButton(onPressed: (){
-                     Navigator.pushReplacementNamed(context, "/Dreamsfinished");
-                   },
-                     child: Text(
-                       'Завершенные',
-                       style:TextStyle(
-                           fontSize: 13,
-                           color: Colors.black,
-                           fontFamily: 'Forum-Regular'
-                       ),
-                     ),
-                   ),
-                 ),
-               ],
-             ),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-               children: [
-                  Container(
-                    decoration: BoxDecoration(color: Colors.grey),
-                    width: MediaQuery.of(context).size.width - 120,
-                    height: MediaQuery.of(context).size.height - 170,
-                    child: ListView.builder(
-                        itemCount: DreamsAll.length,
-                        itemBuilder: (BuildContext context, int index){
-                          return Dismissible(
-                              key: Key(DreamsAll[index]),
-                              child: Card(
-                                child: ListTile(
-                                    title: Text(DreamsAll[index].nameDream),
-                                  trailing: IconButton(
-                                    icon: Icon(
-                                        Icons.menu,
-                                        color: Color.fromRGBO(139, 8, 201, 1),
-                                    ),
-                                    onPressed: (){},
-                                  ),
-                                ),
-                              ),
-                            onDismissed: (direction){
-                                setState(() {
-                                  DreamsAll.removeAt(index);
-                                });
-                            },
-                          );
-                        }
-                    )
+                child: TextButton(onPressed: () {
+                  Navigator.pushReplacementNamed(context, "/DreamsAll");
+                },
+                  child: Text(
+                    'Все',
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: 'Forum-Regular'
+                    ),
                   ),
-               ],
-             )
-           ],
-         ),
-       floatingActionButton: FloatingActionButton(
-         backgroundColor: Color.fromRGBO(139, 8, 201, 1),
-         onPressed: (){
-           Navigator.pushReplacementNamed(context, "/DreamsAdd");
-
-       },
-         child:Icon(
-           Icons.add_box,
-           color: Colors.white,
-
-         ),
-
-       ),
+                ),
+              ),
 
 
+              Container(
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(196, 127, 235, 1),
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                width: 100,
+                height: 35,
+
+                child: TextButton(onPressed: () {
+                  Navigator.pushReplacementNamed(context, "/Dreamsinprogress");
+                },
+                  child: Text(
+                    'В процессе',
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: 'Forum-Regular'
+                    ),
+                  ),
+                ),
+              ),
 
 
+              Container(
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(196, 127, 235, 1),
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                width: 100,
+                height: 35,
 
-       bottomNavigationBar: BottomNavigationBar(
+                child: TextButton(onPressed: () {
+                  Navigator.pushReplacementNamed(context, "/Dreamsfinished");
+                },
+                  child: Text(
+                    'Завершенные',
+                    style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.black,
+                        fontFamily: 'Forum-Regular'
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  decoration: BoxDecoration(color: Colors.grey),
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width - 120,
+                  height: MediaQuery
+                      .of(context)
+                      .size
+                      .height - 170,
+                  child: ListView.builder(
+                      itemCount: dreamList.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Dismissible(
+                          key: Key(dreamList[index].nameDream),
+                          child: Card(
+                            child: ListTile(
+                              title: Text((dreamList[index]).nameDream),
+                              trailing: IconButton(
+                                icon: Icon(
+                                  Icons.menu,
+                                  color: Color.fromRGBO(139, 8, 201, 1),
+                                ),
+                                onPressed: () {
 
-         items: const <BottomNavigationBarItem>[
-           BottomNavigationBarItem(
-             icon: Icon(Icons.map_outlined,
-                 size: 25,
-                 color: Colors.black
-             ),
-             label: 'Обзор',
-           ),
+                                },
+                              ),
+                            ),
+                          ),
+                          onDismissed: (direction) {
+                            setState(() {
+                              dreamList.removeAt(index);
+                            });
+                          },
+                        );
+                      }
+                  )
+              ),
+            ],
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromRGBO(139, 8, 201, 1),
+        onPressed: () {
+          navigateToDreamsAdd(context);
+        },
+        child: Icon(
+          Icons.add_box,
+          color: Colors.white,
 
-           BottomNavigationBarItem(
-             icon: Icon(Icons.widgets_outlined,
-                 size: 25,
-                 color: Colors.black
-             ),
-             label: 'Категории',
-           ),
+        ),
 
-           BottomNavigationBarItem(
-             icon: Icon(Icons.star_outline,
-               size: 25,
-               color: Colors.black,
-             ),
-             label: 'Мои желания',
-           ),
-           BottomNavigationBarItem(
-             icon: Icon(Icons.settings_outlined,
-               size: 25,
-               color: Colors.black,
-             ),
-             label: 'Настройки',
-           ),
-         ],
-         currentIndex: _selectedIndex,
-         selectedItemColor: Color.fromRGBO (139, 8, 201, 1),
-         onTap: _onItemTapped,
-       ),
+      ),
 
 
+      bottomNavigationBar: BottomNavigationBar(
 
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map_outlined,
+                size: 25,
+                color: Colors.black
+            ),
+            label: 'Обзор',
+          ),
 
+          BottomNavigationBarItem(
+            icon: Icon(Icons.widgets_outlined,
+                size: 25,
+                color: Colors.black
+            ),
+            label: 'Категории',
+          ),
 
-
-
-
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star_outline,
+              size: 25,
+              color: Colors.black,
+            ),
+            label: 'Мои желания',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings_outlined,
+              size: 25,
+              color: Colors.black,
+            ),
+            label: 'Настройки',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Color.fromRGBO(139, 8, 201, 1),
+        onTap: _onItemTapped,
+      ),
 
     );
+
   }
 }
-
-
-
-
-
-
-
-
-

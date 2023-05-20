@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-
+import 'package:project_1/pages/Dreams/DreamsAll.dart';
+import 'package:project_1/pages/Dreams/Class.dart';
 
 class DreamsAdd extends StatefulWidget {
   const DreamsAdd({Key? key}) : super(key: key);
@@ -9,10 +9,31 @@ class DreamsAdd extends StatefulWidget {
   State<DreamsAdd> createState() => _DreamsAddState();
 }
 class _DreamsAddState extends State<DreamsAdd> {
-  String _name ="";
-  String _description ="";
-  String _steps ="";
-  String _category ="";
+  TextEditingController nameController = TextEditingController();
+  TextEditingController descriptionController = TextEditingController();
+  TextEditingController stepsController = TextEditingController();
+  TextEditingController categoryController = TextEditingController();
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    descriptionController.dispose();
+    stepsController.dispose();
+    categoryController.dispose();
+    super.dispose();
+  }
+
+  void addButtonPressed() {
+    String name = nameController.text;
+    String description = descriptionController.text;
+    String steps = stepsController.text;
+    String category = categoryController.text;
+
+    dreamAdd newdream = dreamAdd(name,description,steps,category);
+
+    Navigator.pop(context, newdream);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +70,7 @@ class _DreamsAddState extends State<DreamsAdd> {
               height: 20,
             ),
             TextField(
+              controller: nameController,
                 cursorColor: Colors.black,
                 style: TextStyle(
                     color: Colors.white
@@ -71,6 +93,7 @@ class _DreamsAddState extends State<DreamsAdd> {
               height: 20,
             ),
             TextField(
+              controller: descriptionController,
                 cursorColor: Colors.black,
                 style: TextStyle(
                     color: Colors.white
@@ -93,6 +116,7 @@ class _DreamsAddState extends State<DreamsAdd> {
               height: 20,
             ),
             TextField(
+                controller: stepsController,
                 maxLines: 5,
                 cursorColor: Colors.black,
                 style: TextStyle(
@@ -118,6 +142,7 @@ class _DreamsAddState extends State<DreamsAdd> {
             ),
 
             TextField(
+                controller: categoryController,
                 cursorColor: Colors.black,
                 style: TextStyle(
                     color: Colors.white
@@ -135,7 +160,7 @@ class _DreamsAddState extends State<DreamsAdd> {
             SizedBox(
               height: 20,
             ),
-            TextButton(onPressed: (){},
+            TextButton(onPressed: addButtonPressed,
               child: Text("Добавить"),
               style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
