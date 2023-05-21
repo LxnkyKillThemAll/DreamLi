@@ -7,6 +7,8 @@ import 'package:project_1/pages/Dreams/Dreamsinprogress.dart';
 import 'package:project_1/pages/categories.dart';
 import 'package:project_1/pages/review.dart';
 import 'package:project_1/pages/settings.dart';
+import 'package:project_1/pages/Dreams/dream_list_provider.dart';
+import 'package:provider/provider.dart';
 
 
 
@@ -15,23 +17,24 @@ import 'package:project_1/pages/settings.dart';
 
 
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    theme: ThemeData(
-        primaryColor: Colors.deepPurple
+  runApp(ChangeNotifierProvider(
+    create: (_) => DreamListProvider(),
+    child: MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.deepPurple,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Regestry(),
+        '/DreamsAll': (context) => DreamsAll(),
+        '/Dreamsinprogress': (context) => Dreamsinprogress(),
+        '/Dreamsfinished':(context) => Dreamsfinished(),
+        '/DreamsAdd':(context) => DreamsAdd(),
+        '/settings':(context) => settings(),
+        '/review':(context) => review(),
+        '/categories':(context) => categories(),
+      },
     ),
-    initialRoute: '/',
-    routes: {
-      '/': (context) => Regestry(),
-      '/DreamsAll': (context) => DreamsAll(),
-      '/Dreamsinprogress': (context) => Dreamsinprogress(),
-      '/Dreamsfinished':(context) => Dreamsfinished(),
-      '/DreamsAdd':(context) => DreamsAdd(),
-      '/settings':(context) => settings(),
-      '/review':(context) => review(),
-      '/categories':(context) => categories(),
-    },
-
-  ),
-  );
+  ));
 }

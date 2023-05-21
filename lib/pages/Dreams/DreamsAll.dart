@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:project_1/pages/Dreams/dream_list_provider.dart';
 import 'package:project_1/pages/Dreams/DreamsAdd.dart';
 import 'package:project_1/pages/Dreams/Class.dart';
+import 'package:provider/provider.dart';
+
 
 
 
@@ -17,13 +20,7 @@ class _DreamsAllState extends State<DreamsAll> {
 
 
 
-  List<dreamAdd> dreamList = [];
 
-  void addDream(dreamAdd dream) {
-    setState(() {
-      dreamList.add(dream);
-    });
-  }
   void navigateToDreamsAdd(BuildContext context) async {
     final result = await Navigator.push(
       context,
@@ -31,7 +28,8 @@ class _DreamsAllState extends State<DreamsAll> {
     );
 
     if (result != null && result is dreamAdd) {
-      addDream(result);
+      DreamListProvider dreamListProvider = Provider.of<DreamListProvider>(context, listen: false);
+      dreamListProvider.addDream(result);
     }
   }
 
@@ -72,6 +70,8 @@ class _DreamsAllState extends State<DreamsAll> {
 
   @override
   Widget build(BuildContext context) {
+    DreamListProvider dreamListProvider = Provider.of<DreamListProvider>(context);
+    List<dreamAdd> dreamList = dreamListProvider.dreamList;
     return Scaffold(
 
       appBar: AppBar(
