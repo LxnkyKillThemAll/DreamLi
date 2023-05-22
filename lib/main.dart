@@ -16,6 +16,7 @@ import 'package:provider/provider.dart';
 
 
 
+
 void main() {
   runApp(ChangeNotifierProvider(
     create: (_) => DreamListProvider(),
@@ -34,6 +35,7 @@ void main() {
         '/settings':(context) => settings(),
         '/review':(context) => review(),
         '/categories':(context) => categories(),
+
       },
     ),
   ));
