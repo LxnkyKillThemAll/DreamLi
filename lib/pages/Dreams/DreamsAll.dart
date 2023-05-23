@@ -183,9 +183,7 @@ class _DreamsAllState extends State<DreamsAll> {
                     child: ListView.builder(
                         itemCount: dreamList.length,
                         itemBuilder: (BuildContext context, int index) {
-                          return Dismissible(
-                            key: Key(dreamList[index].nameDream),
-                            child: Card(
+                          return  Card(
                               shadowColor: Color.fromRGBO(139, 8, 201, 1),
                               child: ListTile(
                                 title: Text((dreamList[index]).nameDream),
@@ -200,13 +198,9 @@ class _DreamsAllState extends State<DreamsAll> {
                                   },
                                 ),
                               ),
-                            ),
-                            onDismissed: (direction) {
-                              setState(() {
-                                dreamList.removeAt(index);
-                              });
-                            },
-                          );
+                            );
+
+
                         })),
               ),
             ],

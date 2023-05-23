@@ -10,18 +10,7 @@ class Dreamsinprogress extends StatefulWidget {
 }
 class _DreamsinprogressState extends State<Dreamsinprogress> {
 
-  List<String> Dreams = [
-    "Dream 1",
-    "Dream 2",
-    "Dream 3",
-    "Dream 4",
-    "Dream 5",
-    "Dream 6",
-    "Dream 7",
-    "Dream 8",
-    "Dream 9",
-    "Dream 10",
-  ];
+
 
   int _selectedIndex = 2;
 

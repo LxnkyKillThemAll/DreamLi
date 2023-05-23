@@ -4,5 +4,6 @@ class dreamAdd {
   String stepsDream;
   String categoryDream;
 
-  dreamAdd(this.nameDream, this.descriptionDream, this.stepsDream, this.categoryDream);
+  dreamAdd(this.nameDream, this.descriptionDream, this.stepsDream,
+      this.categoryDream);
 }

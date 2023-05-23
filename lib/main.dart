@@ -10,16 +10,10 @@ import 'package:project_1/pages/settings.dart';
 import 'package:project_1/pages/Dreams/dream_list_provider.dart';
 import 'package:provider/provider.dart';
 
-
-
-
-
-
-
-
 void main() {
   runApp(ChangeNotifierProvider(
     create: (_) => DreamListProvider(),
+
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -30,12 +24,11 @@ void main() {
         '/': (context) => Regestry(),
         '/DreamsAll': (context) => DreamsAll(),
         '/Dreamsinprogress': (context) => Dreamsinprogress(),
-        '/Dreamsfinished':(context) => Dreamsfinished(),
-        '/DreamsAdd':(context) => DreamsAdd(),
-        '/settings':(context) => settings(),
-        '/review':(context) => review(),
-        '/categories':(context) => categories(),
-
+        '/Dreamsfinished': (context) => Dreamsfinished(),
+        '/DreamsAdd': (context) => DreamsAdd(),
+        '/settings': (context) => settings(),
+        '/review': (context) => review(),
+        '/categories': (context) => categories(),
       },
     ),
   ));
