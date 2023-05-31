@@ -186,7 +186,7 @@ class _DreamsAllState extends State<DreamsAll> {
                           return  Card(
                               shadowColor: Color.fromRGBO(139, 8, 201, 1),
                               child: ListTile(
-                                title: Text((dreamList[index]).nameDream),
+                                title: Text((dreamList[dreamList.length - index-1]).nameDream),
                                 trailing: IconButton(
                                   icon: Icon(
                                     Icons.menu,
@@ -194,7 +194,7 @@ class _DreamsAllState extends State<DreamsAll> {
                                   ),
                                   onPressed: () {
                                     navigateToDreamDetails(
-                                        context, dreamList[index]);
+                                        context, dreamList[dreamList.length - index-1]);
                                   },
                                 ),
                               ),
