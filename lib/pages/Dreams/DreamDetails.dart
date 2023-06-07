@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:project_1/pages/Dreams/Class.dart';
 
@@ -115,6 +117,27 @@ class DreamDetails extends StatelessWidget {
                       color: Colors.black,
                       fontFamily: 'Forum-Regular'),
                 ),
+              ),
+              Text(
+                'Выполнено?',
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.black,
+                    fontFamily: 'Forum-Regular'),
+              ),
+              Container(
+                margin: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(7.0),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Color.fromRGBO(139, 8, 201, 1))),
+                child: Switch(
+                    value: dream.flag ,
+                    activeColor: Color.fromRGBO(139, 8, 201, 1),
+                    onChanged:(bool value){
+                      dream.flag = value;
+
+                    }
+                )
               ),
             ]),
           ),

@@ -107,70 +107,7 @@ class _DreamsAllState extends State<DreamsAll> {
       ),
       body: Column(
         children: [
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(196, 127, 235, 1),
-                    borderRadius: BorderRadius.circular(20)),
-                width: 100,
-                height: 35,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, "/DreamsAll");
-                  },
-                  child: Text(
-                    'Все',
-                    style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black,
-                        fontFamily: 'Forum-Regular'),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(196, 127, 235, 1),
-                    borderRadius: BorderRadius.circular(20)),
-                width: 100,
-                height: 35,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                        context, "/Dreamsinprogress");
-                  },
-                  child: Text(
-                    'В процессе',
-                    style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black,
-                        fontFamily: 'Forum-Regular'),
-                  ),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Color.fromRGBO(196, 127, 235, 1),
-                    borderRadius: BorderRadius.circular(20)),
-                width: 100,
-                height: 35,
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, "/Dreamsfinished");
-                  },
-                  child: Text(
-                    'Завершенные',
-                    style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.black,
-                        fontFamily: 'Forum-Regular'),
-                  ),
-                ),
-              ),
-            ],
-          ),
+
           SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -184,7 +121,8 @@ class _DreamsAllState extends State<DreamsAll> {
                         itemCount: dreamList.length,
                         itemBuilder: (BuildContext context, int index) {
                           return  Card(
-                              shadowColor: Color.fromRGBO(139, 8, 201, 1),
+
+                            color: dreamList[index].flag == false? Color.fromRGBO(255, 0, 0, 0.2): Color.fromRGBO(0, 128, 0, 0.2),
                               child: ListTile(
                                 title: Text((dreamList[dreamList.length - index-1]).nameDream),
                                 trailing: IconButton(

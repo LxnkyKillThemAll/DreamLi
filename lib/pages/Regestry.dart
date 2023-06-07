@@ -22,7 +22,7 @@ class Regestry extends StatelessWidget {
           alignment: Alignment(0,0.12),
 
             child: ElevatedButton(onPressed: (){
-              Navigator.pushReplacementNamed(context, '/review');
+              Navigator.pushReplacementNamed(context, '/DreamsAll');
             }, child: Text('Войти')),
           ),
 
