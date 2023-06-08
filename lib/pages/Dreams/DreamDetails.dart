@@ -34,7 +34,7 @@ class _DreamDetailsState extends State<DreamDetails> {
             child: Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage("assets/img/DreamLi.png"),
+                      image: AssetImage(widget.dream.picture),
                       fit: BoxFit.fill)),
             ),
           ),

@@ -122,7 +122,7 @@ class _DreamsAllState extends State<DreamsAll> {
                         itemBuilder: (BuildContext context, int index) {
                           return  Card(
 
-                            color: dreamList[index].flag == false? Color.fromRGBO(255, 0, 0, 0.2): Color.fromRGBO(0, 128, 0, 0.2),
+                            color: dreamList[dreamList.length - index-1].flag == false? Color.fromRGBO(255, 0, 0, 0.2): Color.fromRGBO(0, 128, 0, 0.2),
                               child: ListTile(
                                 title: Text((dreamList[dreamList.length - index-1]).nameDream),
                                 trailing: IconButton(

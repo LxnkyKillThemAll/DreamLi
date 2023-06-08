@@ -23,7 +23,7 @@ void main() {
         '/DreamsAll': (context) => DreamsAll(),
         '/DreamsAdd': (context) => DreamsAdd(),
         '/settings': (context) => settings(),
-        //'/review': (context) => review(),
+        '/review': (context) => review(),
         '/categories': (context) => categories(),
       },
     ),

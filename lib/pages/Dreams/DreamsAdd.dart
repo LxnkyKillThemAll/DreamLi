@@ -30,8 +30,9 @@ class _DreamsAddState extends State<DreamsAdd> {
     String steps = stepsController.text;
     String category = categoryController.text;
     bool flag = false;
+    String picture = "assets/img/DreamLi.png";
 
-    dreamAdd newdream = dreamAdd(name, description, steps, category, flag);
+    dreamAdd newdream = dreamAdd(name, description, steps, category, flag, picture);
 
     Navigator.pop(context, newdream);
   }
