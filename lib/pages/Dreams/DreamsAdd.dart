@@ -65,7 +65,11 @@ class _DreamsAddState extends State<DreamsAdd> {
             SizedBox(
               height: 10,
             ),
-            Text("Название"),
+            Text("Название",
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                  fontFamily: 'Forum-Regular'),),
             SizedBox(
               height: 20,
             ),
@@ -84,7 +88,11 @@ class _DreamsAddState extends State<DreamsAdd> {
             SizedBox(
               height: 40,
             ),
-            Text("Описание"),
+            Text("Описание",
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                  fontFamily: 'Forum-Regular'),),
             SizedBox(
               height: 20,
             ),
@@ -103,7 +111,11 @@ class _DreamsAddState extends State<DreamsAdd> {
             SizedBox(
               height: 40,
             ),
-            Text("Шаги"),
+            Text("Шаги",
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                  fontFamily: 'Forum-Regular'),),
             SizedBox(
               height: 20,
             ),
@@ -124,7 +136,11 @@ class _DreamsAddState extends State<DreamsAdd> {
             SizedBox(
               height: 40,
             ),
-            Text("Категория"),
+            Text("Категория",
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.black,
+                  fontFamily: 'Forum-Regular'),),
             SizedBox(
               height: 20,
             ),
@@ -145,7 +161,11 @@ class _DreamsAddState extends State<DreamsAdd> {
             ),
             TextButton(
               onPressed: addButtonPressed,
-              child: Text("Добавить"),
+              child: Text("Добавить",
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontFamily: 'Forum-Regular'),),
               style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                   backgroundColor: Color.fromRGBO(139, 8, 201, 1)),
